@@ -1,7 +1,7 @@
 import logging
 import os
 from optparse import OptionParser
-
+from gevent import pywsgi
 from SpiderKeeper.app import app, initialize
 
 
@@ -20,7 +20,9 @@ def main():
     initialize()
     app.logger.info("SpiderKeeper startd on %s:%s username:%s/password:%s with %s servers:%s" % (
         opts.host, opts.port, opts.username, opts.password, opts.server_type, ','.join(app.config.get('SERVERS', []))))
-    app.run(host=opts.host, port=opts.port, use_reloader=False, threaded=True)
+    # app.run(host=opts.host, port=opts.port, use_reloader=False, threaded=True)
+    server = pywsgi.WSGIServer((opts.host, opts.port), app)
+    server.serve_forever()
 
 
 def parse_opts(config):
@@ -60,7 +62,8 @@ def parse_opts(config):
     parser.add_option("--no-auth",
                       help="disable basic auth",
                       dest='no_auth',
-                      action='store_true')
+                      action='store_true',
+                      default=config.get('NO_AUTH'))
     parser.add_option("-v", "--verbose",
                       help="log level",
                       dest='verbose',

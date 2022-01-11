@@ -44,8 +44,9 @@ def teardown_request(exception):
         db.session.remove()
     db.session.remove()
 
+
 # Define apscheduler
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
 
 
 class Base(db.Model):
