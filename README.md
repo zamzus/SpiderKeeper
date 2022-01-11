@@ -31,7 +31,7 @@ Current Support spider service
 
 
 ```
-pip install spiderkeeper
+pip install -i https://pypi.org/simple/ SpiderKeeper-new
 ```
 
 ### Deployment
