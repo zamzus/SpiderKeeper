@@ -107,14 +107,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Contributing
 
 Contributions are welcomed!
-
-## 交流反馈
-
-QQ群：
-
-1群: 389688974（已满）
-
-2群: 285668943
-
-## 捐赠
-![Contact](https://raw.githubusercontent.com/DormyMo/SpiderKeeper/master/screenshot/donate_wechat.png)
