@@ -15,7 +15,7 @@ setup(
     version=__version__,
     description='Admin ui for spider service, update info: upgrade dependent package',
     long_description=
-    'Go to https://github.com/edisonwd/SpiderKeeper for more information.',
+    'Go to https://github.com/babyhuan/SpiderKeeper for more information.',
     author=__author__,
     author_email='wangmenghuan@nfmdia.com',
     url='https://github.com/babyhuan/SpiderKeeper',
