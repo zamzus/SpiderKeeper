@@ -1,6 +1,7 @@
 import logging
 
 import requests
+from requests.auth import HTTPBasicAuth
 
 
 def request_get(url, retry_times=5):
@@ -9,9 +10,13 @@ def request_get(url, retry_times=5):
     :param retry_times:
     :return: response obj
     '''
+    from SpiderKeeper.app import app
+    username = app.config.get("SCRAPYD_BASIC_AUTH_USERNAME")
+    password = app.config.get("SCRAPYD_BASIC_AUTH_PASSWORD")
+
     for i in range(retry_times):
         try:
-            res = requests.get(url)
+            res = requests.get(url, auth=HTTPBasicAuth(username, password))
         except Exception as e:
             logging.warning('request error retry %s' % url)
             continue
@@ -24,9 +29,13 @@ def request_post(url, data, retry_times=5):
     :param retry_times:
     :return: response obj
     '''
+    from SpiderKeeper.app import app
+    username = app.config.get("SCRAPYD_BASIC_AUTH_USERNAME")
+    password = app.config.get("SCRAPYD_BASIC_AUTH_PASSWORD")
+
     for i in range(retry_times):
         try:
-            res = requests.post(url, data)
+            res = requests.post(url, data, auth=HTTPBasicAuth(username, password))
         except Exception as e:
             logging.warning('request error retry %s' % url)
             continue

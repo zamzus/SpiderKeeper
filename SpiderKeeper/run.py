@@ -13,7 +13,9 @@ def main():
         SQLALCHEMY_DATABASE_URI=opts.database_url,
         BASIC_AUTH_USERNAME=opts.username,
         BASIC_AUTH_PASSWORD=opts.password,
-        NO_AUTH=opts.no_auth
+        NO_AUTH=opts.no_auth,
+        SCRAPYD_BASIC_AUTH_USERNAME=opts.scrapyd_username,
+        SCRAPYD_BASIC_AUTH_PASSWORD=opts.scrapyd_password
     ))
     if opts.verbose:
         app.logger.setLevel(logging.DEBUG)
@@ -45,6 +47,14 @@ def parse_opts(config):
                       help="basic auth password ,default: %s" % config.get('BASIC_AUTH_PASSWORD'),
                       dest='password',
                       default=config.get('BASIC_AUTH_PASSWORD'))
+    parser.add_option("--scrapyd_username",
+                      help="scrapyd basic auth username ,default: %s" % config.get('SCRAPYD_BASIC_AUTH_USERNAME'),
+                      dest='scrapyd_username',
+                      default=config.get('SCRAPYD_BASIC_AUTH_USERNAME'))
+    parser.add_option("--scrapyd_password",
+                      help="scrapyd basic auth password ,default: %s" % config.get('SCRAPYD_BASIC_AUTH_PASSWORD'),
+                      dest='scrapyd_password',
+                      default=config.get('SCRAPYD_BASIC_AUTH_PASSWORD'))
     parser.add_option("--type",
                       help="access spider server type, default: %s" % config.get('SERVER_TYPE'),
                       dest='server_type',

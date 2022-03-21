@@ -1,7 +1,7 @@
 import datetime, time
 
 import requests
-
+from requests.auth import HTTPBasicAuth
 from SpiderKeeper.app.proxy.spiderctrl import SpiderServiceProxy
 from SpiderKeeper.app.spider.model import SpiderStatus, Project, SpiderInstance
 from SpiderKeeper.app.util.http import request
@@ -75,13 +75,16 @@ class ScrapydProxy(SpiderServiceProxy):
         return data != None
 
     def deploy(self, project_name, file_path):
+        from SpiderKeeper.app import app
+        username = app.config.get("SCRAPYD_BASIC_AUTH_USERNAME")
+        password = app.config.get("SCRAPYD_BASIC_AUTH_PASSWORD")
         with open(file_path, 'rb') as f:
             eggdata = f.read()
         res = requests.post(self._scrapyd_url() + '/addversion.json', data={
             'project': project_name,
             'version': int(time.time()),
             'egg': eggdata,
-        })
+        }, auth=HTTPBasicAuth(username, password))
         return res.text if res.status_code == 200 else None
 
     def log_url(self, project_name, spider_name, job_id):

@@ -4,6 +4,7 @@ import tempfile
 
 import flask_restful
 import requests
+from requests.auth import HTTPBasicAuth
 from flask import Blueprint, request
 from flask import abort
 from flask import flash
@@ -17,6 +18,7 @@ from SpiderKeeper.app import db, api, agent, app
 from SpiderKeeper.app.spider.model import JobInstance, Project, JobExecution, SpiderInstance, JobRunType
 
 api_spider_bp = Blueprint('spider', __name__)
+
 
 '''
 ========= api =========
@@ -588,8 +590,12 @@ def job_stop(project_id, job_exec_id):
 
 @app.route("/project/<project_id>/jobexecs/<job_exec_id>/log")
 def job_log(project_id, job_exec_id):
+    from SpiderKeeper.app import app
+    username = app.config.get("SCRAPYD_BASIC_AUTH_USERNAME")
+    password = app.config.get("SCRAPYD_BASIC_AUTH_PASSWORD")
     job_execution = JobExecution.query.filter_by(project_id=project_id, id=job_exec_id).first()
-    res = requests.get(agent.log_url(job_execution))
+    res = requests.get(agent.log_url(job_execution),
+                       auth=HTTPBasicAuth(username, password))
     res.encoding = 'utf8'
     raw = res.text
     return render_template("job_log.html", log_lines=raw.split('\n'))
