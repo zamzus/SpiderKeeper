@@ -47,6 +47,8 @@ Options:
   --port=PORT           port, default:5000
   --username=USERNAME   basic auth username ,default: admin
   --password=PASSWORD   basic auth password ,default: admin
+  --scrapyd_username=SCRAPYD_USERNAME   scrapyd auth username ,default: admin
+  --scrapyd_password=SCRAPYD_PASSWORD   scrapyd auth password ,default: admin
   --type=SERVER_TYPE    access spider server type, default: scrapyd
   --server=SERVERS      servers, default: ['http://localhost:6800']
   --database-url=DATABASE_URL
