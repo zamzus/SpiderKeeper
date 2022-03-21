@@ -1,6 +1,6 @@
 # SpiderKeeper
 
-> update info: upgrade dependent package
+> update info: 增加scrapyd用户认证，解决scrapyd攻击漏洞
 
 [![Latest Version](http://img.shields.io/pypi/v/SpiderKeeper.svg)](https://pypi.python.org/pypi/SpiderKeeper)
 [![Python Versions](http://img.shields.io/pypi/pyversions/SpiderKeeper.svg)](https://pypi.python.org/pypi/SpiderKeeper)
