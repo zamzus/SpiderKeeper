@@ -15,10 +15,10 @@ setup(
     version=__version__,
     description='Admin ui for spider service, update info: upgrade dependent package and add secondary path',
     long_description=
-    'Go to https://github.com/zamzus/SpiderKeeper for more information.',
+    'Go to https://github.com/zamzus/SpiderKeeper-zus for more information.',
     author=__author__,
     author_email='260427977@qq.com',
-    url='https://github.com/zamzus/SpiderKeeper',
+    url='https://github.com/zamzus/SpiderKeeper-zus',
     license='MIT',
     include_package_data=True,
     packages=find_packages(),
