@@ -33,7 +33,7 @@ LOG_LEVEL = 'INFO'
 
 # spider services
 SERVER_TYPE = 'scrapyd'
-SERVERS = ['http://localhost:6805']
+SERVERS = ['http://localhost:6800']
 
 # basic auth
 NO_AUTH = False
@@ -43,4 +43,4 @@ BASIC_AUTH_FORCE = False
 
 # scrapyd auth
 SCRAPYD_BASIC_AUTH_USERNAME = 'admin'
-SCRAPYD_BASIC_AUTH_PASSWORD = 'nddc256'
+SCRAPYD_BASIC_AUTH_PASSWORD = 'admin'
