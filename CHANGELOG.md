@@ -1,4 +1,10 @@
 # SpiderKeeper Changelog
+
+## 1.2.2 (2023-12-26)
+- upgrade dependent package
+- fix "404 Not Found" error from requesting "/favicon.ico" WHEN requesting view url
+- add secondary path
+
 ## 1.2.0 (2017-07-24)
 - support chose server manually
 - support set cron exp manually

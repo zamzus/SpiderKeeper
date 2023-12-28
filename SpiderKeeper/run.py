@@ -38,7 +38,7 @@ def parse_opts(config):
                       help="port, default:5000",
                       dest='port',
                       type="int",
-                      default=5000)
+                      default=50012)
     parser.add_option("--username",
                       help="basic auth username ,default: %s" % config.get('BASIC_AUTH_USERNAME'),
                       dest='username',

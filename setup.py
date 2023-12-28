@@ -11,14 +11,14 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
 
 setup(
-    name='SpiderKeeper-wmh',
+    name='SpiderKeeper-zus',
     version=__version__,
-    description='Admin ui for spider service, update info: upgrade dependent package',
+    description='Admin ui for spider service, update info: upgrade dependent package and add secondary path',
     long_description=
-    'Go to https://github.com/babyhuan/SpiderKeeper for more information.',
+    'Go to https://github.com/zamzus/SpiderKeeper for more information.',
     author=__author__,
-    author_email='wangmenghuan@nfmdia.com',
-    url='https://github.com/babyhuan/SpiderKeeper',
+    author_email='260427977@qq.com',
+    url='https://github.com/zamzus/SpiderKeeper',
     license='MIT',
     include_package_data=True,
     packages=find_packages(),
