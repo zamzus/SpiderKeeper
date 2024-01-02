@@ -500,7 +500,7 @@ def index():
     return redirect(url_for('spider.project_manage'), code=302)
 
 
-@api_spider_bp.route("/project/<project_id>")
+@api_spider_bp.route("/projecgt/<project_id>")
 @basic_auth.required
 def project_index(project_id):
     session['project_id'] = project_id
