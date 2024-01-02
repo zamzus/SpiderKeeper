@@ -11,14 +11,13 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
 
 setup(
-    name='SpiderKeeper',
+    name='SpiderKeeper-zam',
     version=__version__,
     description='Admin ui for spider service',
-    long_description=
-    'Go to https://github.com/DormyMo/SpiderKeeper/ for more information.',
+    long_description='Go tohttps://github.com/zamzus/SpiderKeeper for more information.',
     author=__author__,
-    author_email='modongming91@gmail.com',
-    url='https://github.com/DormyMo/SpiderKeeper/',
+    author_email='260427977@qq.com',
+    url='https://github.com/zamzus/SpiderKeeper',
     license='MIT',
     include_package_data=True,
     packages=find_packages(),

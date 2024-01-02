@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
+
 import logging
-import os
 from optparse import OptionParser
 
 from SpiderKeeper.app import app, initialize
@@ -60,7 +61,8 @@ def parse_opts(config):
     parser.add_option("--no-auth",
                       help="disable basic auth",
                       dest='no_auth',
-                      action='store_true')
+                      action='store_true',
+                      default=config.get('NO_AUTH'))
     parser.add_option("-v", "--verbose",
                       help="log level",
                       dest='verbose',

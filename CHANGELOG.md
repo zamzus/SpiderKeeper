@@ -1,4 +1,9 @@
 # SpiderKeeper Changelog
+
+## 1.2.2 (2024-01-02)
+- add secondary path "/spiderkeeper"
+- fix "404 Not Found" error from requesting "/favicon.ico" WHEN requesting view url
+
 ## 1.2.0 (2017-07-24)
 - support chose server manually
 - support set cron exp manually

@@ -16,7 +16,7 @@ import SpiderKeeper
 from SpiderKeeper import config
 
 # Define the WSGI application object
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/spiderkeeper/static')
 # Configurations
 app.config.from_object(config)
 
@@ -30,7 +30,7 @@ app.logger.setLevel(app.config.get('LOG_LEVEL', "INFO"))
 app.logger.addHandler(handler)
 
 # swagger
-api = swagger.docs(Api(app), apiVersion=SpiderKeeper.__version__, api_spec_url="/api",
+api = swagger.docs(Api(app), apiVersion=SpiderKeeper.__version__, api_spec_url="/spiderkeeper/api",
                    description='SpiderKeeper')
 # Define the database object which is imported
 # by modules and controllers
@@ -43,6 +43,7 @@ def teardown_request(exception):
         db.session.rollback()
         db.session.remove()
     db.session.remove()
+
 
 # Define apscheduler
 scheduler = BackgroundScheduler()
@@ -126,4 +127,4 @@ def initialize():
     init_database()
     regist_server()
     start_scheduler()
-    init_basic_auth()
+    # init_basic_auth()
