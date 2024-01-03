@@ -14,7 +14,7 @@ setup(
     name='SpiderKeeper-zam',
     version=__version__,
     description='Admin ui for spider service',
-    long_description='Go tohttps://github.com/zamzus/SpiderKeeper for more information.',
+    long_description='Go to https://github.com/zamzus/SpiderKeeper for more information.',
     author=__author__,
     author_email='260427977@qq.com',
     url='https://github.com/zamzus/SpiderKeeper',
