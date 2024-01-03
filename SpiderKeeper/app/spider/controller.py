@@ -5,7 +5,6 @@ import tempfile
 
 import flask_restful
 import requests
-from requests.auth import HTTPBasicAuth
 from flask import Blueprint, request
 from flask import abort
 from flask import flash
@@ -14,6 +13,7 @@ from flask import render_template
 from flask import session
 from flask_basicauth import BasicAuth
 from flask_restful_swagger import swagger
+from requests.auth import HTTPBasicAuth
 from werkzeug.utils import secure_filename
 
 from SpiderKeeper.app import db, api, agent, app
@@ -437,23 +437,22 @@ api.add_resource(JobExecutionDetailCtrl, "/api/projects/<project_id>/jobexecs/<j
 '''
 
 
-@app.before_request
+@api_spider_bp.before_request
 def intercept_no_project():
     if request.path.find('/project//') > -1:
         flash("create project first")
         return redirect(url_for('spider.project_manage'), code=302)
 
 
-@app.context_processor
+@api_spider_bp.context_processor
 def inject_common():
     return dict(now=datetime.datetime.now(),
                 servers=agent.servers)
 
 
-@app.context_processor
+@api_spider_bp.context_processor
 def inject_project():
-    project_context = {}
-    project_context['project_list'] = Project.query.all()
+    project_context = dict(project_list=Project.query.all())
     if project_context['project_list'] and (not session.get('project_id')):
         project = Project.query.first()
         session['project_id'] = project.id
@@ -466,16 +465,14 @@ def inject_project():
     return project_context
 
 
-@app.context_processor
+@api_spider_bp.context_processor
 def utility_processor():
     def timedelta(end_time, start_time):
-        '''
-
+        """
         :param end_time:
         :param start_time:
-        :param unit: s m h
         :return:
-        '''
+        """
         if not end_time or not start_time:
             return ''
         if type(end_time) == str:
@@ -556,8 +553,7 @@ def job_periodic(project_id):
     project = Project.find_project_by_id(project_id)
     job_instance_list = [job_instance.to_dict() for job_instance in
                          JobInstance.query.filter_by(run_type="periodic", project_id=project_id).all()]
-    return render_template("job_periodic.html",
-                           job_instance_list=job_instance_list)
+    return render_template("job_periodic.html", job_instance_list=job_instance_list)
 
 
 @api_spider_bp.route("/project/<project_id>/job/add", methods=['post'])
@@ -608,7 +604,6 @@ def job_stop(project_id, job_exec_id):
 @api_spider_bp.route("/project/<project_id>/jobexecs/<job_exec_id>/log")
 @basic_auth.required
 def job_log(project_id, job_exec_id):
-    from SpiderKeeper.app import app
     username = app.config.get("SCRAPYD_BASIC_AUTH_USERNAME")
     password = app.config.get("SCRAPYD_BASIC_AUTH_PASSWORD")
     job_execution = JobExecution.query.filter_by(project_id=project_id, id=job_exec_id).first()
