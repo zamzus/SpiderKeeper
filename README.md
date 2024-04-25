@@ -31,7 +31,7 @@ Current Support spider service
 
 
 ```
-pip install -i https://pypi.org/simple/ SpiderKeeper-wmh
+pip install -i https://pypi.org/simple/ SpiderKeeper-zus
 ```
 
 ### Deployment
@@ -59,7 +59,7 @@ Options:
 
 example:
 
-spiderkeeper --server=http://localhost:6800
+spiderkeeper --server=http://localhost:6800/spiderkeeper
 
 ```
 
