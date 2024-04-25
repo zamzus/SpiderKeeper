@@ -29,7 +29,7 @@ Current Support spider service
 
 
 ```
-pip install spiderkeeper
+pip install spiderkeeper-zam
 ```
 
 ### Deployment
@@ -64,7 +64,7 @@ spiderkeeper --server=http://localhost:6800
 ```
 Visit: 
 
-- web ui : http://localhost:5000
+- web ui : http://localhost:5000/spiderkeeper
 
 1. Create Project
 
@@ -76,7 +76,7 @@ Visit:
 
 3. Done & Enjoy it
 
-- api swagger: http://localhost:5000/api.html
+- api swagger: http://localhost:5000/spiderkeeper/api.html
 
 ```
 
